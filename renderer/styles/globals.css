@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  /* zoom: 98%; */
+}
+
+body {
+  font-family: 'Cabin', sans-serif !important;
+  font-weight: 800;
+  background-color: whitesmoke;
+}
+
+.MuiBadge-badge {
+  right: 30% !important;
+  /* font-size: large; */
+  padding: 15px 13px;
+}
+
+.order-card {
+  position: relative;
+}
+
+.order-card:active .card-overlay {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
+.card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+  border-radius: 20px;
+}
+
+.dimmed {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.link:hover {
+  transform: translateY(-3px);
+  transition: transform 0.2s ease;
+}
+
+::-webkit-scrollbar {
+  margin: 10px;
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgb(61, 61, 61);
+}
+
+.progress-ring {
+  display: block;
+  margin: 0 auto;
+}
+
+.progress-ring-circle {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: progress-animation 2s linear forwards; /* Apply animation */
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+}
+
+@keyframes progress-animation {
+  from {
+    stroke-dashoffset: 1000; /* Start with full circle */
+  }
+  to {
+    stroke-dashoffset: calc(1000 - (1000 * var(--progress))); /* End with progress level */
+  }
+}
+
+/* General receipt styling */
+.receipt-title {
+  text-align: center;
+  font-size: 24px;
+  margin: 10px 0;
+}
+
+.receipt-contact{
+  text-align: center;
+}
+
+.receipt-header {
+  margin-bottom: 20px;
+}
+
+.receipt-header p {
+  margin: 5px 0;
+}
+
+.receipt-divider {
+  margin: 20px 0;
+  border: 0;
+  border-top: 1px solid #ccc;
+}
+
+.receipt-section-title {
+  margin: 10px 0;
+  font-size: 18px;
+}
+
+.receipt-items-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.receipt-item {
+  display: flex;
+  flex-wrap: wrap; /* Allow items to wrap onto multiple lines */
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+.receipt-item span {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal; /* Allow text to wrap */
+}
+
+.receipt-summary {
+  margin-top: 20px;
+}
+
+.receipt-summary h2 {
+  font-size: 20px;
+  margin: 0;
+}
+
+.receipt-summary p {
+  margin: 5px 0;
+}
+
+.receipt-summary h3 {
+  font-size: 22px;
+  margin: 10px 0;
+}
+
+.receipt-footer {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 12px;
+}
+
+.receipt-footer p {
+  margin: 5px 0;
+}

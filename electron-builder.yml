@@ -1,0 +1,12 @@
+appId: com.example.nextron
+productName: Restaurant
+copyright: Ubaid Ali Qureshi
+directories:
+  output: dist
+  buildResources: resources
+files:
+  - from: .
+    filter:
+      - package.json
+      - app
+publish: null
