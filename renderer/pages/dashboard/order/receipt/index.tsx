@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { Order } from '@/models';
+import receipt_metadata from '../../../../../receipt_metadata.json';
 
 const OrderReceiptPage = () => {
   const [order, setOrder] = useState<Order>();
+  const [metaData, setMetaData] = useState(receipt_metadata);
 
   const router = useRouter();
 
@@ -14,11 +16,16 @@ const OrderReceiptPage = () => {
 
   const handlePrint = () => {
     window.print();
+    window.ipc.writeFile({ filePath: '/receipt_metadata.json', data: JSON.stringify(metaData) });
   };
 
   const goBack = () => {
     router.back();
   };
+
+  function updateMetaData(key: keyof typeof receipt_metadata, e) {
+    metaData[key] = e.target.innerText;
+  }
 
   return (
     <>
@@ -28,11 +35,21 @@ const OrderReceiptPage = () => {
         <div>
           <button onClick={goBack}>Back</button>
           <div className="receipt">
-            <h1 className="receipt-title" contentEditable="true">
-              Quetta Chaman Restaurant
+            <h1
+              className="receipt-title"
+              contentEditable="true"
+              onKeyUp={(e) => updateMetaData('restaurant_name', e)}
+            >
+              {metaData.restaurant_name}
             </h1>
-            <p className="receipt-contact" contentEditable="true">
-              Phone +92 300 123456789
+            <p className="receipt-contact" contentEditable="true" onKeyUp={(e) => updateMetaData('address', e)}>
+              {metaData.address}
+            </p>
+            <p className="receipt-contact">
+              Phone{' '}
+              <span contentEditable="true" onKeyUp={(e) => updateMetaData('phone_no', e)}>
+                {metaData.phone_no}
+              </span>
             </p>
             <div className="receipt-header">
               <p>

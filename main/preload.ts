@@ -1,6 +1,8 @@
 import { contextBridge, ipcRenderer, IpcRendererEvent } from "electron";
 
 const handler = {
+  writeFile: (filePath) => ipcRenderer.invoke("write-file", filePath),
+
   send(channel: string, value: unknown) {
     ipcRenderer.send(channel, value);
   },
