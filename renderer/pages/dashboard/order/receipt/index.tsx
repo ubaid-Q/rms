@@ -28,8 +28,12 @@ const OrderReceiptPage = () => {
         <div>
           <button onClick={goBack}>Back</button>
           <div className="receipt">
-            <h1 className="receipt-title">Quetta Cafe Receipt</h1>
-            <p className="receipt-contact">Phone +92 300 123456789</p>
+            <h1 className="receipt-title" contentEditable="true">
+              Quetta Chaman Restaurant
+            </h1>
+            <p className="receipt-contact" contentEditable="true">
+              Phone +92 300 123456789
+            </p>
             <div className="receipt-header">
               <p>
                 Order ID: <strong>{order.id}</strong>

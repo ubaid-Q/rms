@@ -10,13 +10,13 @@ const isProd = process.env.NODE_ENV === "production";
 console.log({ isProd });
 
 const server = express();
-server.use(express.static(path.join(cwd(), isProd ? ".." : "", "/app")));
+server.use(express.static(path.join(cwd(), isProd ? ".." : "..", "/app")));
 
 server.listen(8000, "0.0.0.0", () => {
   console.log("EXPRESS SERVER ============================================");
 });
 
-process.chdir(path.join(cwd(), isProd ? ".." : "", "/backend"));
+process.chdir(path.join(cwd(), isProd ? ".." : "..", "/backend"));
 const nestServer = spawn("node", ["dist/src/main.js"]);
 
 nestServer.stdout.on("data", (data) => {

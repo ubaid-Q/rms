@@ -93,7 +93,11 @@ const Dashboard = ({ toggleDarkMode, darkMode }: BaseProps) => {
     router.reload();
   }
 
-  console.log({ admin });
+  const printBill = (order) => {
+    console.log({ order });
+    localStorage.setItem('order_to_print', JSON.stringify(order));
+    router.push('/dashboard/order/receipt');
+  };
 
   return (
     <Container
@@ -212,7 +216,9 @@ const Dashboard = ({ toggleDarkMode, darkMode }: BaseProps) => {
                         </Typography>
                         <br />
                         <ButtonGroup size="small" aria-label="Small button group">
-                          <Button endIcon={<Print />}>Print</Button>
+                          <Button endIcon={<Print />} onClick={printBill.bind(this, order)}>
+                            Print
+                          </Button>
                           <Button onClick={handleCancelOrder.bind(order)} endIcon={<Cancel />}>
                             Cancel
                           </Button>
