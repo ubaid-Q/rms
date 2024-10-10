@@ -88,7 +88,9 @@ export const createWindow = (
   win.on("close", saveState);
 
   ipcMain.handle("write-file", async (event, { filePath, data }) => {
-    return writeFile(path.join(__dirname, "..", filePath), data, (err) => {
+    const userDataPath = app.getPath("userData");
+
+    return writeFile(path.join(userDataPath, filePath), data, (err) => {
       console.log({ err });
     });
   });

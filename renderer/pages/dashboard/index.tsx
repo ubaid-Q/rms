@@ -59,6 +59,7 @@ const Dashboard = ({ toggleDarkMode, darkMode }: BaseProps) => {
   }
 
   async function getOngoingOrders() {
+    await new Promise((res, rej) => setInterval(res, 2000));
     const orders = await getPendingOrders();
     setOngoingOrders(orders);
   }
